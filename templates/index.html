@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+
+{% block body %}  
+<div class="row">
+    {% for item in shows %}
+        <div class="col-sm-3 px-2 py-3">
+            <div class="card" style="text-align: center;">
+                <img class="card-img-top" src="{{ item.image }}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                {% if session.name %}
+                    {% if item.id in movie_id_liked %}
+                        {% if destination %}
+                            <a href="{{ url_for('unlike', movie_id = item.id, destination = destination)}}">Unlike</a>
+                        {% else %}
+                        <a href="{{ url_for('unlike', movie_id = item.id, destination = '_')}}">Unlike</a>
+                        {% endif %}
+                    {% else %}
+                        <a href="{{ url_for('create_like', movie_id = item.id, destination = destination)}}">Like</a>
+                    {% endif %}                        
+                                        
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>    
+{% endblock %}

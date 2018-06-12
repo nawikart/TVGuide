@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">TV Maze</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div id="navbarSupportedContent" style="float: right;">
+            {% if session.name %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ session.name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('login_form') }}">Login</a>
+                        <a class="dropdown-item" href="{{ url_for('register_form') }}">Register</a>
+                    </div>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>       
+    </div>
+  </nav>
+
+  <div class="mb-5" style="background-color: #ddd;">
+        <div class="container">
+                <form style="width: 100%;" class="form-inline my-2 my-lg-0" method="GET" action="{{ url_for('search_redirect') }}">
+                    <input class="form-control col-sm-12" name="html_query" type="search" placeholder="username or email" aria-label="Search">
+                </form>             
+        </div>
+  </div>

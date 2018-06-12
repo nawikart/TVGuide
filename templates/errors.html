@@ -1,0 +1,11 @@
+<div class="col-6 offset-3 my-5">
+        {% with errors = get_flashed_messages() %} {% if errors %}
+        <div class="font-weight-italic text-danger">
+            <ul>
+                {% for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %} {% endwith %}
+    </div>

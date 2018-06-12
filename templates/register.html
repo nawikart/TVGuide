@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block body %}
+
+<div class="row my-5">
+    <div class="col-6 offset-3">
+        <h1>Welcome to TVMaze</h1>
+        <form action="{{ url_for('register_process') }}" method="POST">
+            <div class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="html_name" id="name" placeholder="Name">
+                </div>                                         
+            <div class="form-group">
+                <label for="regemail">Email address</label>
+                <input type="email" class="form-control" name="html_email" id="regemail" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="regpassword">Password</label>
+                <input type="password" class="form-control" name="html_password" id="regpassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" class="form-control" name="html_confirm" id="confirm" placeholder="Confirm Password">
+                    </div>   
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>        
+    </div>
+    {% include 'errors.html' %}
+</div>
+
+{% endblock %}
